@@ -1,7 +1,5 @@
-# Usa la imagen base de Ubuntu 18.04
 FROM ubuntu:18.04
 
-# Actualiza los paquetes e instala OpenSSH
 RUN apt-get update && \
     apt-get install -y openssh-server sudo && \
     mkdir /var/run/sshd && \
@@ -11,8 +9,6 @@ RUN apt-get update && \
     ssh-keygen -A && \
     apt-get clean
 
-# Exponer el puerto SSH
 EXPOSE 22
 
-# Comando para iniciar el servicio SSH
 CMD ["/usr/sbin/sshd", "-D"]
